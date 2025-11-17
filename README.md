@@ -149,5 +149,5 @@ Proprietary - Trade Leads Digital © 2025
 ## Contact
 
 - Email: contact@tradeleadsdigital.com.au
-- Phone: 1300 XXX XXX
+- Phone: 1300 532 379
 - Website: [Coming Soon]
