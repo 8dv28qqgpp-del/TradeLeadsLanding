@@ -64,7 +64,7 @@ export default function Header({ onContactClick }: HeaderProps) {
             <div className="flex items-center space-x-4 text-sm text-gray-600">
               <a href="tel:+61400000000" className="flex items-center hover:text-blue-800 transition">
                 <Phone className="w-4 h-4 mr-1" />
-                <span className="hidden xl:inline">1300 XXX XXX</span>
+                <span className="hidden xl:inline">1300 532 379</span>
               </a>
             </div>
             <button
