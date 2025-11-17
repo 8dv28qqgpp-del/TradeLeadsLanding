@@ -37,21 +37,23 @@ export default function ContactForm({ isOpen, onClose }: ContactFormProps) {
     });
   };
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setIsSubmitting(true);
 
     try {
-      console.log('Demo form submission:', {
-        businessName: formData.businessName,
-        name: formData.name,
-        phone: formData.phone,
-        email: formData.email,
-        tradeType: formData.tradeType,
-        serviceArea: formData.serviceArea
+      const form = e.currentTarget;
+      const formDataEncoded = new URLSearchParams(new FormData(form) as any).toString();
+
+      const response = await fetch('/', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: formDataEncoded
       });
 
-      await new Promise(resolve => setTimeout(resolve, 1500));
+      if (!response.ok) {
+        throw new Error('Form submission failed');
+      }
 
       setSubmitSuccess(true);
       setTimeout(() => {
@@ -102,7 +104,22 @@ export default function ContactForm({ isOpen, onClose }: ContactFormProps) {
               <p className="text-gray-600">We'll be in touch within 24 hours to discuss your free demo.</p>
             </div>
           ) : (
-            <form onSubmit={handleSubmit} className="px-6 py-6 space-y-5">
+            <form
+              name="contact"
+              method="POST"
+              data-netlify="true"
+              data-netlify-honeypot="bot-field"
+              onSubmit={handleSubmit}
+              className="px-6 py-6 space-y-5"
+            >
+              <input type="hidden" name="form-name" value="contact" />
+
+              <div className="hidden">
+                <label>
+                  Don't fill this out if you're human: <input name="bot-field" />
+                </label>
+              </div>
+
               <div className="grid md:grid-cols-2 gap-5">
                 <div>
                   <label htmlFor="businessName" className="block text-sm font-semibold text-gray-700 mb-2">
