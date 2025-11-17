@@ -103,7 +103,7 @@ export default function Header({ onContactClick }: HeaderProps) {
               </button>
               <a href="tel:+61400000000" className="flex items-center text-gray-700 hover:text-blue-800 py-2">
                 <Phone className="w-4 h-4 mr-2" />
-                1300 XXX XXX
+                1300 532 379
               </a>
               <button
                 onClick={onContactClick}
