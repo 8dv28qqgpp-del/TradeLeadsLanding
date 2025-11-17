@@ -1,11 +1,5 @@
 import { useState } from 'react';
 import { X, Loader2, CheckCircle2 } from 'lucide-react';
-import { createClient } from '@supabase/supabase-js';
-
-const supabase = createClient(
-  import.meta.env.VITE_SUPABASE_URL,
-  import.meta.env.VITE_SUPABASE_ANON_KEY
-);
 
 interface ContactFormProps {
   isOpen: boolean;
@@ -48,21 +42,16 @@ export default function ContactForm({ isOpen, onClose }: ContactFormProps) {
     setIsSubmitting(true);
 
     try {
-      const { error } = await supabase
-        .from('leads')
-        .insert([
-          {
-            business_name: formData.businessName,
-            contact_name: formData.name,
-            phone: formData.phone,
-            email: formData.email,
-            trade_type: formData.tradeType,
-            service_area: formData.serviceArea,
-            status: 'new'
-          }
-        ]);
+      console.log('Demo form submission:', {
+        businessName: formData.businessName,
+        name: formData.name,
+        phone: formData.phone,
+        email: formData.email,
+        tradeType: formData.tradeType,
+        serviceArea: formData.serviceArea
+      });
 
-      if (error) throw error;
+      await new Promise(resolve => setTimeout(resolve, 1500));
 
       setSubmitSuccess(true);
       setTimeout(() => {
