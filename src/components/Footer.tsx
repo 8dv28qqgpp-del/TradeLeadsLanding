@@ -27,7 +27,7 @@ export default function Footer() {
             <div className="space-y-3">
               <a href="tel:+61400000000" className="flex items-center text-gray-300 hover:text-white transition group">
                 <Phone className="w-5 h-5 mr-3 text-blue-400 group-hover:text-blue-300" />
-                1300 XXX XXX
+                1300 532 379
               </a>
               <a href="mailto:contact@tradeleadsdigital.com.au" className="flex items-center text-gray-300 hover:text-white transition group">
                 <Mail className="w-5 h-5 mr-3 text-blue-400 group-hover:text-blue-300" />
